@@ -8,6 +8,10 @@ defined('BASEPATH') OR exit ('No direct script access allowed');
 */
 class Model_Role extends CI_Model
 {
+	public function __construct(){
+		$this->load->database();
+	}
+
 	function list_role()
 		{
 			$sql 	= "SELECT * FROM roles";
@@ -15,23 +19,30 @@ class Model_Role extends CI_Model
 			return $db->result();
 		}
 
-	function view_detail($id)
+	function view_detail($name, $parent=[])
 		{
-			$sql 	= "SELECT roles_skills.id_roles,roles.name_roles,roles_skills.id_skill,skills.name_skill
-					   FROM roles_skills JOIN roles ON roles_skills.id_roles = roles.id_roles 
-					   JOIN skills ON roles_skills.id_skill = skills.id_skill WHERE roles.id_roles='$id'";
-			$db 	= $this->db->query($sql);
-			return $db->result();
-		}
+			$parent[] = $name;
 
-	function view_detail_row($id)
-		{
-			$sql 	= "SELECT roles_skills.id_roles,roles.name_roles,roles_skills.id_skill,skills.name_skill
-					   FROM roles_skills JOIN roles ON roles_skills.id_roles = roles.id_roles 
-					   JOIN skills ON roles_skills.id_skill = skills.id_skill WHERE roles.id_roles='$id'";
-			$db 	= $this->db->query($sql);
-			return $db->row();
-		}
+			$sql 	= "SELECT current_role, goal_roles, name_skills FROM upload WHERE current_role = ? ";
+
+			$db = $this->db->query($sql,array($name));
+
+			$roles = [];
+			
+			foreach($db->result_array() as $idx => $row){
+				
+				if(!in_array($row['goal_roles'], $parent) ){
+					
+					$row['children'] = $this->view_detail($row['goal_roles'], $parent);
+					$row['name_skills'] = json_decode($row['name_skills']);
+					
+					$roles[] = $row;
+				}
+			}
+
+			return $roles;
+			
+		}	
 }
 
 ?>

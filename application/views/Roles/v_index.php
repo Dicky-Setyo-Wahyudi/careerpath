@@ -72,7 +72,7 @@
                                                         <td> <?php echo $no ?> </td>
                                                         <td> <?php echo $row->name_roles ?> </td>
                                                         <td>
-                                                             <a class="btn btn-info" href="<?php echo base_url();?>Role/detail/<?php echo $row->id_roles ?>"><i class="fa fa-search"></i> Detail </a>
+                                                             <a class="btn btn-info" href="<?php echo base_url();?>Role/detail/<?php echo $row->name_roles ?>"><i class="fa fa-search"></i> Detail </a>
                                                         </td>
                                                     </tr>
                                                 <?php }?>

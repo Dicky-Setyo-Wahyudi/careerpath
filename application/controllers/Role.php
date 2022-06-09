@@ -25,17 +25,18 @@ class Role extends CI_Controller
 			$this->load->view('Roles/v_index',$data);
 		}
 
-	function detail($id)
+	function detail($name)
 		{
-			// $id 		= $this->uri->segment('3')
-			$detail 	= $this->Model_Role->view_detail($this->uri->segment(3));
-			$role 		= $this->Model_Role->view_detail_row($id);
+			$name = urldecode($name);
 
-			$data 		= array(
-									'lstDetail'	=> $detail,
-									'role'		=> $role
-							   );
-			$this->load->view('Roles/v_detail',$data);
+			$model = $this->Model_Role->view_detail($name);
+
+			$list_data 	= array(
+				'data' => $model,
+				'role_name' => $name
+		    );
+
+			$this->load->view('Roles/v_detail',$list_data);
 		}
 }
 
