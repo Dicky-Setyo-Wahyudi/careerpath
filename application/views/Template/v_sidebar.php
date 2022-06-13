@@ -17,13 +17,13 @@
     <hr class="sidebar-divider">
 
         <div class="sidebar-heading">
-            Manage Role
+            Manage Roles
         </div>
 
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('Role') ?>">
                 <i class="fas fa-fw fa-cog"></i>
-                <span> Role </span></a>
+                <span> Roles </span></a>
         </li>
 
     

@@ -27,13 +27,14 @@ class Role extends CI_Controller
 
 	function detail($id)
 		{
-			// $id 		= $this->uri->segment('3')
 			$detail 	= $this->Model_Role->view_detail($this->uri->segment(3));
 			$role 		= $this->Model_Role->view_detail_row($id);
+			// $goal_role	= $this->Model_Role->view_goal_roles($id);
 
 			$data 		= array(
 									'lstDetail'	=> $detail,
-									'role'		=> $role
+									'role'		=> $role,
+									// 'lstGoal'	=> $goal_role
 							   );
 			$this->load->view('Roles/v_detail',$data);
 		}
