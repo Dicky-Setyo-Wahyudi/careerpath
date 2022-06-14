@@ -68,3 +68,13 @@ Acknowledgement
 
 The CodeIgniter team would like to thank EllisLab, all the
 contributors to the CodeIgniter project and you, the CodeIgniter user.
+
+
+
+**************
+Manual Book
+**************
+
+1) Silahkan import database yang berada pada folder database
+2) Pindahkan folder ke webserver (xampp)
+3) Jalankan program
