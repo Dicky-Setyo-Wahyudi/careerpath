@@ -1,0 +1,103 @@
+/*Now the CSS*/
+* {margin: 0; padding: 0;}
+
+.tree ul {
+    padding-top: 20px; position: relative;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+    list-style-type:none;
+    display:flex;
+    justify-content: center;
+}
+
+.tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li a.parent{
+    background-color: #4e73df;
+    color: white;
+}
+
+.tree li a.child{
+    background-color: #e74a3b;
+    color: white;
+}
+
+.tree li::before, .tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 3px solid #4e73df;
+	width: 50%; height: 20px;
+}
+.tree li::after{
+	right: auto; left: 50%;
+	border-left: 3px solid #4e73df;
+}
+
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+
+.tree li:only-child{ padding-top: 0;}
+
+.tree li:first-child::before, .tree li:last-child::after{
+	border: 0 none;
+}
+
+.tree li:last-child::before{
+	border-right: 3px solid #4e73df;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+.tree ul ul.parent-border::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 3px solid #4e73df;
+	width: 0; height: 20px;
+}
+
+.tree ul ul.child-border::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 3px solid #e74a3b;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+	border: 0px solid rgb(30, 29, 29);
+	padding: 5px 10px;
+	text-decoration: none;
+	color: rgb(250, 244, 244);
+	font-family: arial, verdana, tahoma;
+	font-size: 13px;
+	display: inline-block;
+	
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: #A6E296; color: white;
+}
